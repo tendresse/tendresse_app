@@ -6,15 +6,15 @@
             <ion-list id="signup-list4" class=" ">
                 <label class="item item-input " id="signup-input4">
                     <span class="input-label">Username</span>
-                    <input type="text" placeholder="">
+                    <input type="text" placeholder="username" ng-model="data.username">
                 </label>
                 <label class="item item-input " id="signup-input5">
                     <span class="input-label">Password</span>
-                    <input type="text" placeholder="">
+                    <input type="password" placeholder="password" ng-model="data.password">
                 </label>
             </ion-list>
             <div class="spacer" style="width: 300px; height: 54px;"></div>
-            <button id="signup-button3" style="border-radius:80px 80px 80px 80px;" class=" button button-royal  button-block ">Sign up</button>
+            <button id="signup-button3" style="border-radius:80px 80px 80px 80px;" ng-click="sign(data)" class=" button button-royal  button-block ">Sign up</button>
         </form>
         <div style="margin-right:-20px;">
             <a ui-sref="login" id="signup-button18" style="left:-10px;font-size:12px;" class=" button button-positive  button-full button-clear ">Already have an account? Click here to Login</a>
