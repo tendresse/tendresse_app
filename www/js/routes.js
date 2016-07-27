@@ -44,14 +44,12 @@ angular.module('app.routes', [])
     controller: 'meCtrl'
   })
 
-  .state('friend', {
-    url: '/friend',
-    templateUrl: 'templates/friend.html',
-    controller: 'friendCtrl'
+  .state('profile', {
+    url: '/profile/:username',
+    templateUrl: 'templates/profile.html',
+    controller: 'profileCtrl'
   })
 
 $urlRouterProvider.otherwise('/sign')
-
-$httpProvider.interceptors.push('AuthInterceptor')
 
 });

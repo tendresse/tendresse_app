@@ -1,33 +1,17 @@
 <ion-view title="me" hide-nav-bar="true" id="page6" style="background-color:#A9E2E2;" class=" ">
-    <ion-content padding="true" class="manual-ios-statusbar-padding">
+    <ion-content padding="true" class="manual-ios-statusbar-padding" on-swipe-left="onSwipeLeft()" on-swipe-right="onSwipeRight()">
         <h3 id="me-heading5" style="color:#EC8ECF;font-weight:600;font-style:italic;text-align:center;" class=" ">Username</h3>
-        <ion-list id="me-list8" class=" ">
-            <ion-item class="item-avatar  " id="me-list-item26">
-                <img src="img/WW04imNRnDkUJx5DkANA_fist.png">
-                <h2>Do It !</h2>
-                <p>Received 10 #fist</p>
-            </ion-item>
-            <ion-item class="item-avatar  " id="me-list-item27">
-                <img src="img/XWSL0kmTaycPrGl9EPI4_dark_vader.png">
-                <h2>La guerre des étoiles</h2>
-                <p>Received 10 #cosplay</p>
+        <ion-list id="me-list8" class=" " ng-repeat="achievement in achievements">
+            <ion-item class="item-avatar  " id="achievement-{{achievement.id}}">
+                <img src="img/{{achievement.img}}">
+                <h2>{{achievement.title}}</h2>
+                <p>{{achievement.description}}</p>
             </ion-item>
         </ion-list>
-        <ion-list id="me-list9" class=" ">
-            <ion-item class="item-avatar  " id="me-list-item28">
-                <img src="img/MgoRtLZYT6GijNVwbW7E_dog.png">
-                <h2>Wouf !</h2>
-                <p>Received 100 #doggyStyle</p>
-            </ion-item>
-            <ion-item class="item-avatar  " id="me-list-item29">
-                <img src="img/cZMPATZfR5OCB0kLKlDi_gang bang2.png">
-                <h2>Plus on est de fous...</h2>
-                <p>Received 10 #GangBang</p>
-            </ion-item>
-        </ion-list>
-        <div class="spacer" style="width: 300px; height: 140px;"></div>
-        <div id="me-button-bar7" class=" button-bar ">
-            <a ui-sref="home" id="me-button27" class=" button button-assertive  button-block icon ion-android-home "></a>
-        </div>
+        <ion-item ng-hide="achievements.length" class="item-avatar  " id="achievement-{{achievement}}">
+            <img src="img/WW04imNRnDkUJx5DkANA_fist.png">
+            <h2>You have no achievement :'(</h2>
+            <p>Send more tendresses to unlock achievements! #fist</p>
+        </ion-item>
     </ion-content>
 </ion-view>
