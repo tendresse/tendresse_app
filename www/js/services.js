@@ -46,7 +46,7 @@ angular.module('app.services', [])
     	// Build the request object
 		var req = {
 		  method: 'PUT',
-		  url: 'http://localhost:5000/api/v1/users',
+		  url: 'https://tendresse.herokuapp.com/api/v1/users',
 		  headers: {
 		    'Content-Type': 'application/json'
 		  },
@@ -73,7 +73,7 @@ angular.module('app.services', [])
     	// Build the request object
 		var req = {
 		  method: 'POST',
-		  url: 'http://localhost:5000/api/v1/users',
+		  url: 'https://tendresse.herokuapp.com/api/v1/users',
 		  headers: {
 		    'Content-Type': 'application/json'
 		  },
@@ -101,7 +101,7 @@ angular.module('app.services', [])
           if (token) {
             var req = {
               method: 'GET',
-              url: 'http://localhost:5000/api/v1/users/me/reset_token',
+              url: 'https://tendresse.herokuapp.com/api/v1/users/me/reset_token',
               headers: {
                 'Content-Type': 'application/json'
               }
@@ -155,14 +155,14 @@ angular.module('app.services', [])
 .factory('TendresseFactory', ['$http', '$q', function($http, $q){
 
     var getTendresses = function() {
-      return $http.get('http://localhost:5000/api/v1/users/me/pending');
+      return $http.get('https://tendresse.herokuapp.com/api/v1/users/me/pending');
     };
 
     var stateTendresseAsViewed = function(id){
       return $q(function(resolve, reject) {
         var req = {
           method: 'DELETE',
-          url: 'http://localhost:5000/api/v1/users/me/pending',
+          url: 'https://tendresse.herokuapp.com/api/v1/users/me/pending',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -182,7 +182,7 @@ angular.module('app.services', [])
       return $q(function(resolve, reject) {
         var req = {
           method: 'POST',
-          url: 'http://localhost:5000/api/v1/users/me/send',
+          url: 'https://tendresse.herokuapp.com/api/v1/users/me/send',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -214,7 +214,7 @@ angular.module('app.services', [])
         console.log("friend username = ",username);
         var req = {
           method: 'POST',
-          url: 'http://localhost:5000/api/v1/users/me/friends',
+          url: 'https://tendresse.herokuapp.com/api/v1/users/me/friends',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -236,7 +236,7 @@ angular.module('app.services', [])
         console.log("friend username = ",username);
         var req = {
           method: 'DELETE',
-          url: 'http://localhost:5000/api/v1/users/me/friends',
+          url: 'https://tendresse.herokuapp.com/api/v1/users/me/friends',
           headers: {
             'Content-Type': 'application/json'
           },
@@ -254,11 +254,11 @@ angular.module('app.services', [])
     };
 
     var getFriends = function() {
-      return $http.get('http://localhost:5000/api/v1/users/me/friends');
+      return $http.get('https://tendresse.herokuapp.com/api/v1/users/me/friends');
     };
 
     var getProfile = function(username){
-      return $http.get('http://localhost:5000/api/v1/users/'+username+'/profile');
+      return $http.get('https://tendresse.herokuapp.com/api/v1/users/'+username+'/profile');
     }
 
     return {
