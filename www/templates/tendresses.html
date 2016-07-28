@@ -4,14 +4,14 @@
             <img ng-src="{{ gifUrl }}" src="img/R8NmRziMRxKuqNnHOsDM_11.jpg" width="100%" height="100%" style="display: block; margin-left: auto;">
         </div>
         <ion-list id="tendresses-list6" class=" manual-list-fullwidth " ng-repeat="tendresse in tendresses">
-            <ion-item class="item-icon-right" id="tendresse-{{tendresse.id}}" on-tap="displayTendresse({{tendresse.id}},'{{tendresse.gif}}')">
+            <ion-item class="item-icon-right" ng-class="tendresse.clicked ? 'item-assertive' : ''" id="tendresse-{{tendresse.id}}" on-tap="displayTendresse({{tendresse.id}},'{{tendresse.gif}}',tendresse)" tendresse="tendresse">
                 {{tendresse.sender}}
                 <i class="icon ion-heart icon-accessory"></i>
             </ion-item>
         </ion-list>
         <ion-item ng-hide="tendresses.length" class="item-icon-right">
-            You have no tendresse :(
-            <i class="icon ion-briefcase"></i>
+            You have no tendresses :(
+            <i class="icon ion-heart-broken"></i>
         </ion-item>
     </ion-content>
 </ion-view>

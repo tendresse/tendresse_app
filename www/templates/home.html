@@ -1,24 +1,29 @@
 <ion-view title="home" hide-nav-bar="true" id="page1" class=" ">
     <ion-content padding="false" class="manual-ios-statusbar-padding" on-swipe-left="onSwipeLeft()" on-swipe-right="onSwipeRight()">
-        <a ui-sref="tendresses" id="home-button7" style="border-radius:0px 0px 0px 0px;" class=" button button-royal  button-block ">
-            {{nbTendresses}} tendresses not seen</a>
-        <ion-list id="home-list2" class=" " ng-repeat="friend in friends">
-            <ion-item class="item-icon-right" id="friend-{{friend.username}}" on-hold="profile('{{friend.username}}')" on-tap="sendTendresse('{{friend.username}}',$event)">
+        <ion-item ui-sref="tendresses" class="item-royal">
+            {{nbTendresses}} tendresses not seen
+        </ion-item>
+        <div class="spacer" style="width: 300px; height: 42px;"></div>
+        <div class="item item-divider">
+            Friends :
+        </div>
+        <ion-list id="home-list2" class=" " ng-repeat="friend in friends"> 
+            <ion-item ng-class="$index % 2 == '0' ? 'item-assertive' : 'item-dark'" class="text-center" on-hold="profile('{{friend.username}}')" on-tap="sendTendresse('{{friend.username}}',$event)">
                     {{friend.username}}
             </ion-item>
         </ion-list>
         <ion-list id="home-listt" class=" " ng-hide="friends.length">
+            <ion-item class="item-icon-left">
+                Swipe left to go to your profile
+                <i class="icon ion-arrow-right-c"></i>
+            </ion-item>
             <ion-item class="item-icon-right">
                 Swipe right to see your tendresses
-                <i class="icon ion-briefcase"></i>
+                <i class="icon ion-arrow-left-c"></i>
             </ion-item>
-            <ion-item class="item-icon-right">
-                Swipe left to go to your profile
-                <i class="icon ion-briefcase"></i>
-            </ion-item>
-            <ion-item class="item-icon-right">
-                Add some friends from your profile !!!
-                <i class="icon ion-briefcase"></i>
+            <ion-item class="item-icon-right" ui-sref="me">
+                Add some friends from your profile
+                <i class="icon ion-person-add"></i>
             </ion-item>
         </ion-list>
     </ion-content>

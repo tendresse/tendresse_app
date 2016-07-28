@@ -28,7 +28,6 @@ angular.module('app.services', [])
   function useCredentials(token) {
     isAuthenticated = true;
     authToken = token;
-    console.log("useCredentials :",token);
     // Set the token as header for your requests!
     $http.defaults.headers.common['Authorization'] = token;
   }
@@ -95,6 +94,27 @@ angular.module('app.services', [])
 		});
     });
   };
+
+  var checkToken = function() {
+      return $q(function(resolve, reject) {
+          var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
+          if (token) {
+            var req = {
+              method: 'GET',
+              url: 'http://localhost:5000/api/v1/users/me/reset_token',
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            };
+            $http(req).success(function(resp){
+                storeUserCredentials(resp.username,resp.token);
+                  resolve('login/reset token success');
+            }).error(function(error){
+                  reject('login/reset token error');
+            });
+          }
+      });
+  };
  
   var logout = function() {
     destroyUserCredentials();
@@ -112,7 +132,8 @@ angular.module('app.services', [])
     login: login,
     logout: logout,
     isAuthenticated: function() {return isAuthenticated;},
-    username: function() {return username;}
+    username: function() {return window.localStorage.getItem(USERNAME);},
+    checkToken: checkToken
   };
 
 }])
@@ -190,6 +211,7 @@ angular.module('app.services', [])
 
     var addFriend = function(username) {
       return $q(function(resolve, reject) {
+        console.log("friend username = ",username);
         var req = {
           method: 'POST',
           url: 'http://localhost:5000/api/v1/users/me/friends',
@@ -208,6 +230,29 @@ angular.module('app.services', [])
       });
     };
 
+
+    var removeFriend = function(username) {
+      return $q(function(resolve, reject) {
+        console.log("friend username = ",username);
+        var req = {
+          method: 'DELETE',
+          url: 'http://localhost:5000/api/v1/users/me/friends',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: {
+            "username_friend": username
+          }
+        };
+        $http(req).success(function(resp){
+              resolve('friend removed');
+        }).error(function(error){
+          console.log(error);
+              reject('error removing friend');
+        });
+      });
+    };
+
     var getFriends = function() {
       return $http.get('http://localhost:5000/api/v1/users/me/friends');
     };
@@ -220,6 +265,7 @@ angular.module('app.services', [])
         addFriend: addFriend,
         getFriends: getFriends,
         getProfile: getProfile,
+        removeFriend: removeFriend
     };
 
 }])

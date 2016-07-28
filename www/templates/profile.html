@@ -11,9 +11,9 @@
       </div>
         <ion-list id="me-list8" class=" " ng-repeat="achievement in achievements">
             <ion-item class="item-avatar  " id="achievement-{{achievement.id}}">
-                <img ng-src="img/{{achievement.icon}}" onerror="this.src='img/WW04imNRnDkUJx5DkANA_fist.png'">
+                <img src="img/{{achievement.img}}">
                 <h2>{{achievement.title}}</h2>
-                <p>{{achievement.type_of}} {{achievement.condition}} #{{achievement.tags[0]}} tendresses</p>
+                <p>{{achievement.description}}</p>
             </ion-item>
         </ion-list>
         <ion-item ng-hide="achievements.length" class="item-avatar  " id="achievement-{{achievement}}">
@@ -23,6 +23,7 @@
         </ion-item>
         <div class="bar bar-footer bar-assertive" ng-click="logout()">
           <div class="title">L0g m3 0ut</div>
+
         </div>
     </ion-content>
 </ion-view>

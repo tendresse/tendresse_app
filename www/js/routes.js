@@ -32,22 +32,16 @@ angular.module('app.routes', [])
     controller: 'tendressesCtrl'
   })
 
-  .state('add', {
-    url: '/add',
-    templateUrl: 'templates/add.html',
-    controller: 'addCtrl'
-  })
-
   .state('me', {
     url: '/me',
     templateUrl: 'templates/me.html',
     controller: 'meCtrl'
   })
 
-  .state('profile', {
-    url: '/profile/:username',
-    templateUrl: 'templates/profile.html',
-    controller: 'profileCtrl'
+  .state('friend', {
+    url: '/friend/:username',
+    templateUrl: 'templates/friend.html',
+    controller: 'friendCtrl'
   })
 
 $urlRouterProvider.otherwise('/sign')

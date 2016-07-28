@@ -1,35 +1,27 @@
 <ion-view title="friend" hide-nav-bar="true" id="page7" style="background-color:#A9E2E2;" class=" ">
     <ion-content padding="true" class="manual-ios-statusbar-padding">
-        <h3 id="friend-heading6" style="color:#EC8ECF;font-weight:600;font-style:italic;text-align:center;" class=" ">Username</h3>
-        <ion-list id="friend-list10" class=" ">
-            <ion-item class="item-avatar  " id="friend-list-item30">
-                <img src="img/WW04imNRnDkUJx5DkANA_fist.png">
-                <h2>Do It !</h2>
-                <p>Received 10 #fist</p>
-            </ion-item>
-            <ion-item class="item-avatar  " id="friend-list-item31">
-                <img src="img/XWSL0kmTaycPrGl9EPI4_dark_vader.png">
-                <h2>La guerre des étoiles</h2>
-                <p>Received 10 #cosplay</p>
-            </ion-item>
-            <ion-item class="item-avatar  " id="friend-list-item32">
-                <img src="img/MgoRtLZYT6GijNVwbW7E_dog.png">
-                <h2>Wouf !</h2>
-                <p>Received 100 #doggyStyle</p>
-            </ion-item>
-            <ion-item class="item-avatar  " id="friend-list-item33">
-                <img src="img/cZMPATZfR5OCB0kLKlDi_gang bang2.png">
-                <h2>Plus on est de fous...</h2>
-                <p>Received 10 #GangBang</p>
-            </ion-item>
-        </ion-list>
-        <div class="spacer" style="width: 300px; height: 38px;"></div>
-        <div id="friend-button-bar4" class=" button-bar ">
-            <button id="friend-button13" style="border-radius:80px 80px 80px 80px;" class=" button button-royal  button-block ">Delete</button>
+        <div class="bar bar-header bar-calm">
+            <button class="button button-icon button-clear ion-ios-arrow-back" ui-sref="home">
+            </button>
+          <h1 class="title">{{username}}</h1>
         </div>
-        <div class="spacer" style="width: 300px; height: 37px;"></div>
-        <div id="friend-button-bar8" class=" button-bar ">
-            <a ui-sref="home" id="friend-button29" class=" button button-assertive  button-block icon ion-android-home "></a>
+        <div class="content has-header padding">
+            <ion-list id="friend-list10" class=" " ng-repeat="achievement in achievements">
+                <ion-item class="item-avatar  " id="achievement-{{achievement.id}}">
+                    <img ng-src="img/{{achievement.icon}}" onerror="this.src='img/WW04imNRnDkUJx5DkANA_fist.png'">
+                    <h2>{{achievement.title}}</h2>
+                    <p>{{achievement.type_of}} {{achievement.condition}} #{{achievement.tags[0]}} tendresses</p>
+                </ion-item>
+            </ion-list>
+            <ion-item ng-hide="achievements.length" class="item-avatar  " id="achievement-{{achievement}}">
+                <img src="img/WW04imNRnDkUJx5DkANA_fist.png">
+                <h2>no_achievements.cpp :'(</h2>
+                <p>Send & Get more tendresses ! #y0/0</p>
+            </ion-item>
+            <div class="spacer" style="width: 300px; height: 37px;"></div>
+        </div>
+        <div class="bar bar-footer bar-assertive" ng-click="removeFriend()">
+          <div class="title">Unfriend</div>
         </div>
     </ion-content>
 </ion-view>
